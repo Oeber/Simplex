@@ -31,7 +31,8 @@ public class SimplexTable extends javax.swing.JFrame {
     int pivocoluna;
     int pivolinha;
     int res;
-    boolean sidup;
+    int sidup;
+    int au;
 
     /**
      * Creates new form NewJFrame
@@ -40,6 +41,8 @@ public class SimplexTable extends javax.swing.JFrame {
         initComponents();
         pivocoluna = 0;
         res = 0;
+        au = 1;
+        sidup = 1;
         jRadioButton1.setActionCommand("Max(Z)");
         jRadioButton2.setActionCommand("Min(Z)");
     }
@@ -71,6 +74,8 @@ public class SimplexTable extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,7 +92,7 @@ public class SimplexTable extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Calcular");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -134,18 +139,13 @@ public class SimplexTable extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,9 +154,9 @@ public class SimplexTable extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(4, 4, 4)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                 .addGap(5, 5, 5)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
@@ -173,25 +173,37 @@ public class SimplexTable extends javax.swing.JFrame {
         jRadioButton2.setText("Min(Z)");
         jRadioButton2.setActionCommand("Max(Z)");
 
+        jTextField2.setEditable(false);
+
+        jLabel6.setText("Valor de Z:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1)))
-                .addGap(18, 18, 18)
+                        .addComponent(jTextField1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -200,21 +212,27 @@ public class SimplexTable extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addGap(13, 13, 13)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))))
         );
 
         pack();
@@ -238,13 +256,29 @@ public class SimplexTable extends javax.swing.JFrame {
                     }
                 } while (res != 1);
             } else if (buttonGroup1.getSelection().getActionCommand().equals("Min(Z)")) {
-                findpivotduplex();
-                duplexfind();
-                createpivot();
-                simplex();
+                do {
+                    if (sidup == 1) {
+                        findpivotduplex();
+                    } else {
+                        findpivot();
+                    }
+                    createpivot();
+                    simplex();
+                    count();
+                    if (sidup == 1) {
+                        duplexfind();
+                    }
+                    if (sidup == 0 && au == 1) {
+                        ((DefaultTableModel) jTable1.getModel()).removeRow(jTable1.getRowCount() - 1);
+                        au = 0;
+                    }
+                } while (res != 1);
             }
             detvariables();
+            displayZ();
             res = 0;
+            sidup=1;
+            au=1;                 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -358,7 +392,21 @@ public class SimplexTable extends javax.swing.JFrame {
         }
 
     }
-
+    
+    private void displayZ(){
+        double aux;
+        if (buttonGroup1.getSelection().getActionCommand().equals("Max(Z)")) {
+            jTextField2.setText((String)jTable1.getValueAt(0, jTable1.getColumnCount()-1));
+            jLabel6.setText("Maximo de");
+        }
+        else{
+            aux=Double.valueOf((String)jTable1.getValueAt(0, jTable1.getColumnCount()-1));
+            aux*=-1;
+            jLabel6.setText("Minimo de");
+            jTextField2.setText(""+aux);
+        }
+    }
+    
     private void detvariables() {
         int loc = 0;
         String aux = "", aux2, aux3 = "";
@@ -407,15 +455,13 @@ public class SimplexTable extends javax.swing.JFrame {
             for (int i = jTable1.getRowCount() - 2; i >= 0; i--) {
                 aux = Double.valueOf((String) jTable1.getValueAt(i, jTable1.getColumnCount() - 1));
                 aux2 = Double.valueOf((String) jTable1.getValueAt(i, pivocoluna));
-                aux= aux/aux2;
+                aux = aux / aux2;
                 if (aux < mpo && aux > 0) {
                     mpo = aux;
                     pivolinha = i;
                 }
             }
         }
-                System.out.println(pivolinha);
-        System.out.println(pivocoluna);
     }
 
     private void count() {
@@ -443,6 +489,7 @@ public class SimplexTable extends javax.swing.JFrame {
                 colmname = jTable1.getColumnName(i);
                 if (colmname.contains("a") || colmname.contains("A")) {
                     jTable1.removeColumn(jTable1.getColumnModel().getColumn(i));
+                    i--;
                 }
             }
         }
@@ -477,11 +524,12 @@ public class SimplexTable extends javax.swing.JFrame {
     }
 
     private void duplexfind() {
-        if (((String) jTable1.getValueAt(jTable1.getRowCount() - 1, jTable1.getColumnCount() - 1)).equals("0")) {
-            ((DefaultTableModel) jTable1.getModel()).removeRow(jTable1.getRowCount() - 1);
-            sidup = false;
+        Double valor;
+        valor = Double.valueOf((String) jTable1.getValueAt(jTable1.getRowCount() - 1, jTable1.getColumnCount() - 1));
+        if (valor == 0) {
+            sidup = 0;
         } else {
-            sidup = true;
+            sidup = 1;
         }
     }
 
@@ -505,6 +553,7 @@ public class SimplexTable extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
@@ -515,5 +564,6 @@ public class SimplexTable extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
